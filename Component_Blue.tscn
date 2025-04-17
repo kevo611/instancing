@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ur5c67k5ggv5"]
+
+[ext_resource type="Script" uid="uid://b0xu3efehinr8" path="res://Component_Blue.gd" id="1_apooj"]
+[ext_resource type="Texture2D" uid="uid://dw00hvtdteokt" path="res://circle_blue.png" id="1_p2x85"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_p2x85")
+script = ExtResource("1_apooj")
+metadata/_custom_type_script = "uid://b0xu3efehinr8"
