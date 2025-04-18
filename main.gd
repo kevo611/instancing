@@ -30,9 +30,9 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("duplicate"):
-		print("instancing new component")
-		inst(0, get_global_mouse_position())
+	#if Input.is_action_just_pressed("duplicate"):
+		#print("instancing new component")
+		#inst(0, get_global_mouse_position())
 	pass
 
 
@@ -60,17 +60,16 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton or event is InputEventMouseMotion or event is InputEventScreenTouch or event is InputEventKey or event is InputEventScreenDrag or event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		return
 	
-	var choice:int
 	var _pos: Vector2 = Vector2.ZERO
 
-	
 	#escape or exit button
 	if event is InputEventAction and event.action == "exit":
 		get_tree().quit()
+	elif event is InputEventAction and event.action == "rb":
+		queue_free()
+		return
 	elif event is InputEventAction and event.action == "duplicate":
-		if touch_screen_generate_button.shape.get_rect().has_point(get_global_mouse_position()):
-			return
-		var instance
+		var instance = component_red_scene.instantiate()
 		if item_list.get_selected_items().size() > 0:
 			if item_list.get_selected_items().get(0) == COLORS.COLOR_RED:
 				instance = component_red_scene.instantiate()
