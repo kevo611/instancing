@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://blcq506pkmflg"]
+
+[ext_resource type="Texture2D" uid="uid://bg4m6gap3r0as" path="res://circle_magenta.png" id="1_x11fi"]
+[ext_resource type="Script" uid="uid://cgr5safj4c5gc" path="res://Component_Magenta.gd" id="2_x11fi"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_x11fi")
+script = ExtResource("2_x11fi")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

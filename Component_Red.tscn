@@ -7,6 +7,7 @@
 radius = 127.0
 
 [node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_gc4b7")
 script = ExtResource("2_gc4b7")
 metadata/_custom_type_script = "uid://b4ge0grxli7sq"

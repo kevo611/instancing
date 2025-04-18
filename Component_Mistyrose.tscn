@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3lode7xvmve8"]
+
+[ext_resource type="Texture2D" uid="uid://ev8hut0nxcw3" path="res://circle_mistyrose.png" id="1_3fhse"]
+[ext_resource type="Script" uid="uid://b85luxoa1igvu" path="res://Component_Mistyrose.gd" id="2_3fhse"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_3fhse")
+script = ExtResource("2_3fhse")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

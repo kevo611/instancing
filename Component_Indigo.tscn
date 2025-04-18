@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4hi6km3210ew"]
+
+[ext_resource type="Texture2D" uid="uid://b52fv0pjls04g" path="res://circle_indigo.png" id="1_xs1xw"]
+[ext_resource type="Script" uid="uid://8mjp5k6otgr4" path="res://Component_Indigo.gd" id="2_xs1xw"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_xs1xw")
+script = ExtResource("2_xs1xw")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

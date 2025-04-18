@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dw00hvtdteokt" path="res://circle_blue.png" id="1_p2x85"]
 
 [node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_p2x85")
 script = ExtResource("1_apooj")
 metadata/_custom_type_script = "uid://b0xu3efehinr8"

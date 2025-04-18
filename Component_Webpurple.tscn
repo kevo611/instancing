@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nx5qi1aqfw1g" path="res://circle_webpurple.png" id="1_nbwiu"]
 
 [node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_nbwiu")
 script = ExtResource("1_c22ku")
 metadata/_custom_type_script = "uid://chyxxp3scyt23"

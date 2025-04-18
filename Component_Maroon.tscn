@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdfr0c02nbl86"]
+
+[ext_resource type="Texture2D" uid="uid://c8ujlu5tgxrb6" path="res://circle_maroon.png" id="1_47gnl"]
+[ext_resource type="Script" uid="uid://d15fblc1ek05d" path="res://Component_Maroon.gd" id="2_47gnl"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_47gnl")
+script = ExtResource("2_47gnl")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

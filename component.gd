@@ -1,7 +1,7 @@
 class_name Component
 extends Sprite2D
 
-enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE}
+enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, COLOR_GOLD, COLOR_GRAY, COLOR_BLACK, COLOR_YELLOW, COLOR_WEBPURPLE, COLOR_VIOLETRED, COLOR_VIOLET, COLOR_TEAL, COLOR_SKYBLUE, COLOR_SILVER, COLOR_ROSE, COLOR_REBECCAPURPLE, COLOR_PURPLE, COLOR_ORCHID, COLOR_ORANGE, COLOR_OCEANGREEN, COLOR_MISTYROSE, COLOR_MAROON, COLOR_MAGENTA, COLOR_LEAFGREEN, COLOR_INDIGO, COLOR_FUSCIA, COLOR_CYAN, COLOR_AQUA}
 
 var is_dragging: bool
 var _offset: Vector2
@@ -44,7 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		#	return
 		is_dragging = false
 		_z_index = _z_index - 1
-		scale = Vector2.ONE
+		scale = Vector2(0.75,0.75)
 		queue_redraw()
 	#when the touch screen pressed and dragged or the mouse is clicked and dragged
 	elif event is InputEventScreenDrag:

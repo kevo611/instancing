@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cwjdgcgy5ijsu" path="res://Component_Gold.gd" id="2_73cvp"]
 
 [node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_4luq3")
 script = ExtResource("2_73cvp")
 metadata/_custom_type_script = "uid://chyxxp3scyt23"

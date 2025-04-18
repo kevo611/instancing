@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk5a1bhu2w3re"]
+
+[ext_resource type="Texture2D" uid="uid://cjfpw5kp0dxck" path="res://circle_aqua.png" id="1_sxcb2"]
+[ext_resource type="Script" uid="uid://c0atmu1wecx8f" path="res://Component_Aqua.gd" id="2_sxcb2"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_sxcb2")
+script = ExtResource("2_sxcb2")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"
