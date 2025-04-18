@@ -8,7 +8,7 @@ var _offset: Vector2
 var _z_index: int
 
 func _unhandled_input(event: InputEvent) -> void:
-	#delete component if right clicked	
+	#delete component if right clicked/long pressed
 	if event is InputEventMouseButton and event.pressed and event.button_index == 2:
 		if get_rect().has_point(to_local(event.position)):
 			queue_free()

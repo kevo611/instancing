@@ -11,7 +11,6 @@ var component_white_scene = preload("res://Component_White.tscn")
 @onready var item_list: ItemList = $ItemList
 @onready var touch_screen_generate_button: TouchScreenButton = $TouchScreenGenerateButton
 
-
 func _ready() -> void:
 	item_list.select(0)
 	var instance = component_red_scene.instantiate()
@@ -28,13 +27,11 @@ func _ready() -> void:
 	add_child(instance)
 	pass
 
-
 func _physics_process(_delta: float) -> void:
 	#if Input.is_action_just_pressed("duplicate"):
 		#print("instancing new component")
 		#inst(0, get_global_mouse_position())
 	pass
-
 
 func inst(_group: int, pos):
 	var instance = component_red_scene.instantiate()
@@ -43,18 +40,15 @@ func inst(_group: int, pos):
 	
 	queue_redraw()
 
-
 func _process(_delta: float) -> void:
 	queue_redraw()
 	pass
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			get_tree().quit()
-	
 	
 	#ignore these events
 	if event is InputEventMouseButton or event is InputEventMouseMotion or event is InputEventScreenTouch or event is InputEventKey or event is InputEventScreenDrag or event is InputEventJoypadButton or event is InputEventJoypadMotion:

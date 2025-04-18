@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmm4vowmgi22y"]
+[gd_scene load_steps=4 format=3 uid="uid://cmm4vowmgi22y"]
 
 [ext_resource type="Texture2D" uid="uid://0fisx3h4gwuq" path="res://circle_red.png" id="1_gc4b7"]
 [ext_resource type="Script" uid="uid://b4ge0grxli7sq" path="res://Component_Red.gd" id="2_gc4b7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gc4b7"]
+radius = 127.0
 
 [node name="Sprite2D" type="Sprite2D"]
 texture = ExtResource("1_gc4b7")
 script = ExtResource("2_gc4b7")
 metadata/_custom_type_script = "uid://b4ge0grxli7sq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gc4b7")
