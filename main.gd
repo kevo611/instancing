@@ -1,6 +1,6 @@
-extends Node2D
+extends CanvasLayer
 
-enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, COLOR_GOLD, COLOR_GRAY, COLOR_BLACK, COLOR_YELLOW, COLOR_WEBPURPLE, COLOR_VIOLETRED, COLOR_VIOLET, COLOR_TEAL, COLOR_SKYBLUE, COLOR_SILVER, COLOR_ROSE, COLOR_REBECCAPURPLE, COLOR_PURPLE, COLOR_ORCHID, COLOR_ORANGE, COLOR_OCEANGREEN, COLOR_MISTYROSE, COLOR_MAROON, COLOR_MAGENTA, COLOR_LEAFGREEN, COLOR_INDIGO, COLOR_FUSCIA, COLOR_CYAN, COLOR_AQUA}
+enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, COLOR_GOLD, COLOR_GRAY, COLOR_BLACK, COLOR_YELLOW, COLOR_WEBPURPLE, COLOR_VIOLETRED, COLOR_VIOLET, COLOR_TEAL, COLOR_SKYBLUE, COLOR_SILVER, COLOR_ROSE, COLOR_REBECCAPURPLE, COLOR_PURPLE, COLOR_ORCHID, COLOR_ORANGE, COLOR_OCEANGREEN, COLOR_MISTYROSE, COLOR_MAROON, COLOR_MAGENTA, COLOR_LEAFGREEN, COLOR_INDIGO, COLOR_FUCHSIA, COLOR_CYAN, COLOR_AQUA}
 
 var component_red_scene = preload("res://Component_Red.tscn")
 var component_green_scene = preload("res://Component_Green.tscn")
@@ -27,12 +27,12 @@ var component_maroon_scene = preload("res://Component_Maroon.tscn")
 var component_magenta_scene = preload("res://Component_Magenta.tscn")
 var component_leafgreen_scene = preload("res://Component_Leafgreen.tscn")
 var component_indigo_scene = preload("res://Component_Indigo.tscn")
-var component_fuscia_scene = preload("res://Component_Fuscia.tscn")
+var component_fuscia_scene = preload("res://Component_Fuchsia.tscn")
 var component_cyan_scene = preload("res://Component_Cyan.tscn")
 var component_aqua_scene = preload("res://Component_Aqua.tscn")
 
-@onready var item_list: ItemList = $ItemList
-@onready var touch_screen_generate_button: TouchScreenButton = $TouchScreenGenerateButton
+@onready var item_list: ItemList = $Node2D/ItemList
+@onready var touch_screen_generate_button: TouchScreenButton = $Node2D/TouchScreenGenerateButton
 
 func _ready() -> void:
 	item_list.select(0)
@@ -120,6 +120,7 @@ func _ready() -> void:
 	instance = component_aqua_scene.instantiate()
 	instance.position = Vector2(1350,668)
 	add_child(instance)
+	
 	pass
 
 func _physics_process(_delta: float) -> void:
@@ -203,7 +204,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				instance = component_leafgreen_scene.instantiate()
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_INDIGO:
 				instance = component_indigo_scene.instantiate()
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_FUSCIA:
+			elif item_list.get_selected_items().get(0) == COLORS.COLOR_FUCHSIA:
 				instance = component_fuscia_scene.instantiate()
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_CYAN:
 				instance = component_cyan_scene.instantiate()

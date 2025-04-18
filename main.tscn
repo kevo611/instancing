@@ -9,15 +9,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(32, 32)
 
-[node name="main" type="Node2D"]
+[node name="main" type="CanvasLayer"]
 script = ExtResource("1_ig7tw")
 
-[node name="TouchScreenExitButton" type="TouchScreenButton" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TouchScreenExitButton" type="TouchScreenButton" parent="Node2D"]
 scale = Vector2(3, 3)
 texture_normal = ExtResource("2_0xm2m")
 action = "exit"
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="ItemList" type="ItemList" parent="Node2D"]
 top_level = true
 z_index = 1
 offset_left = 2.0
@@ -52,11 +54,11 @@ item_21/text = "Maroon"
 item_22/text = "Magenta"
 item_23/text = "Leafgreen"
 item_24/text = "Indigo"
-item_25/text = "Fuscia"
+item_25/text = "Fuchsia"
 item_26/text = "Cyan"
 item_27/text = "Aqua"
 
-[node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="."]
+[node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="Node2D"]
 position = Vector2(-3, 420)
 texture_normal = ExtResource("3_h2yge")
 shape = SubResource("RectangleShape2D_h2yge")
