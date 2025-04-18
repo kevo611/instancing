@@ -1,12 +1,15 @@
 extends Node2D
 
-enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE}
+enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, COLOR_GOLD, COLOR_GRAY, COLOR_BLACK}
 
 var component = preload("res://component.tscn")
 var component_red_scene = preload("res://Component_Red.tscn")
 var component_green_scene = preload("res://Component_Green.tscn")
 var component_blue_scene = preload("res://Component_Blue.tscn")
 var component_white_scene = preload("res://Component_White.tscn")
+var component_gold_scene = preload("res://Component_Gold.tscn")
+var component_gray_scene = preload("res://Component_Gray.tscn")
+var component_black_scene = preload("res://Component_Black.tscn")
 
 @onready var item_list: ItemList = $ItemList
 @onready var touch_screen_generate_button: TouchScreenButton = $TouchScreenGenerateButton
@@ -25,27 +28,29 @@ func _ready() -> void:
 	instance = component_white_scene.instantiate()
 	instance.position = Vector2(900,300)
 	add_child(instance)
+	instance = component_gold_scene.instantiate()
+	instance.position = Vector2(1050,300)
+	add_child(instance)
+	instance = component_gray_scene.instantiate()
+	instance.position = Vector2(1200,300)
+	add_child(instance)
+	instance = component_black_scene.instantiate()
+	instance.position = Vector2(1350,300)
+	add_child(instance)
 	pass
 
 func _physics_process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("duplicate"):
-		#print("instancing new component")
-		#inst(0, get_global_mouse_position())
+
 	pass
 
 func inst(_group: int, pos):
 	var instance = component_red_scene.instantiate()
 	instance.position = pos
 	add_child(instance)
-	
-	queue_redraw()
-
-func _process(_delta: float) -> void:
-	queue_redraw()
-	pass
+	#queue_redraw()
 
 func _unhandled_input(event: InputEvent) -> void:
-	
+	#shut down on escape
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			get_tree().quit()
@@ -73,10 +78,16 @@ func _unhandled_input(event: InputEvent) -> void:
 				instance = component_blue_scene.instantiate()
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_WHITE:
 				instance = component_white_scene.instantiate()
+			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GOLD:
+				instance = component_gold_scene.instantiate()
+			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GRAY:
+				instance = component_gray_scene.instantiate()
+			elif item_list.get_selected_items().get(0) == COLORS.COLOR_BLACK:
+				instance = component_black_scene.instantiate()
 		
 			instance.position = Vector2(300,650)
 			add_child(instance)
-			print("spawning new red component")
+			print("spawning new component")
 	
 	#_unhandled_input
 	pass

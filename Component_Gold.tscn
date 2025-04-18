@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://kkgr7ujky771"]
+
+[ext_resource type="Texture2D" uid="uid://bqthm6ali6ycj" path="res://circle_gold.png" id="1_4luq3"]
+[ext_resource type="Script" uid="uid://cwjdgcgy5ijsu" path="res://Component_Gold.gd" id="2_73cvp"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_4luq3")
+script = ExtResource("2_73cvp")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

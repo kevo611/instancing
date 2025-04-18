@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm1sg0ll4p6ua"]
+
+[ext_resource type="Texture2D" uid="uid://d3u5wms0w31fd" path="res://circle_black.png" id="1_6uida"]
+[ext_resource type="Script" uid="uid://dbg0fk8abpi2j" path="res://Component_Black.gd" id="2_6uida"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_6uida")
+script = ExtResource("2_6uida")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

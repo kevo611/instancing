@@ -21,16 +21,19 @@ action = "exit"
 top_level = true
 z_index = 1
 offset_left = 2.0
-offset_top = 195.0
+offset_top = 191.0
 offset_right = 131.0
-offset_bottom = 416.0
+offset_bottom = 412.0
 theme_override_fonts/font = SubResource("SystemFont_0xm2m")
 theme_override_font_sizes/font_size = 32
-item_count = 4
+item_count = 7
 item_0/text = "Red"
 item_1/text = "Green"
 item_2/text = "Blue"
 item_3/text = "White"
+item_4/text = "Gold"
+item_5/text = "Gray"
+item_6/text = "Black"
 
 [node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="."]
 position = Vector2(-3, 420)
