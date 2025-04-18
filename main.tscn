@@ -28,7 +28,7 @@ offset_right = 188.0
 offset_bottom = 414.0
 theme_override_fonts/font = SubResource("SystemFont_0xm2m")
 theme_override_font_sizes/font_size = 32
-item_count = 28
+item_count = 27
 item_0/text = "Red"
 item_1/text = "Green"
 item_2/text = "Blue"
@@ -56,7 +56,6 @@ item_23/text = "Leafgreen"
 item_24/text = "Indigo"
 item_25/text = "Fuchsia"
 item_26/text = "Cyan"
-item_27/text = "Aqua"
 
 [node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="Node2D"]
 position = Vector2(-3, 420)
