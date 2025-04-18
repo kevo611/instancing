@@ -1,4 +1,4 @@
-class_name Component_Gray
+class_name Component_Violetred
 extends Component
 
 
