@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, COLOR_GOLD, COLOR_GRAY, COLOR_BLACK, COLOR_YELLOW, COLOR_WEBPURPLE, COLOR_VIOLETRED, COLOR_VIOLET, COLOR_TEAL, COLOR_SKYBLUE, COLOR_SILVER, COLOR_ROSE, COLOR_REBECCAPURPLE, COLOR_PURPLE, COLOR_ORCHID, COLOR_ORANGE, COLOR_OCEANGREEN, COLOR_MISTYROSE, COLOR_MAROON, COLOR_MAGENTA, COLOR_LEAFGREEN, COLOR_INDIGO, COLOR_FUCHSIA, COLOR_CYAN}
+enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, COLOR_GOLD, COLOR_GRAY, COLOR_BLACK, COLOR_YELLOW, COLOR_WEBPURPLE, COLOR_VIOLETRED, COLOR_VIOLET, COLOR_TEAL, COLOR_SKYBLUE, COLOR_SILVER, COLOR_ROSE, COLOR_REBECCAPURPLE, COLOR_PURPLE, COLOR_ORCHID, COLOR_ORANGE, COLOR_OCEANGREEN, COLOR_MISTYROSE, COLOR_MAROON, COLOR_MAGENTA, COLOR_LEAFGREEN, COLOR_INDIGO,COLOR_CYAN}
 
 var component_red_scene = preload("res://Component_Red.tscn")
 var component_green_scene = preload("res://Component_Green.tscn")
@@ -27,7 +27,6 @@ var component_maroon_scene = preload("res://Component_Maroon.tscn")
 var component_magenta_scene = preload("res://Component_Magenta.tscn")
 var component_leafgreen_scene = preload("res://Component_Leafgreen.tscn")
 var component_indigo_scene = preload("res://Component_Indigo.tscn")
-var component_fuscia_scene = preload("res://Component_Fuchsia.tscn")
 var component_cyan_scene = preload("res://Component_Cyan.tscn")
 
 @onready var item_list: ItemList = $Node2D/ItemList
@@ -110,11 +109,8 @@ func _ready() -> void:
 	instance = component_indigo_scene.instantiate()
 	instance.position = Vector2(900,668)
 	add_child(instance)
-	instance = component_fuscia_scene.instantiate()
-	instance.position = Vector2(1050,668)
-	add_child(instance)
 	instance = component_cyan_scene.instantiate()
-	instance.position = Vector2(1200,668)
+	instance.position = Vector2(1050,668)
 	add_child(instance)
 	
 	pass
@@ -127,7 +123,6 @@ func inst(_group: int, pos):
 	var instance = component_red_scene.instantiate()
 	instance.position = pos
 	add_child(instance)
-	#queue_redraw()
 
 func _unhandled_input(event: InputEvent) -> void:
 	#shut down on escape
@@ -200,8 +195,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				instance = component_leafgreen_scene.instantiate()
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_INDIGO:
 				instance = component_indigo_scene.instantiate()
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_FUCHSIA:
-				instance = component_fuscia_scene.instantiate()
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_CYAN:
 				instance = component_cyan_scene.instantiate()
 		
