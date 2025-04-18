@@ -15,6 +15,11 @@ run/main_scene="uid://ba4rwi82uxlgo"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/window_width_override=1440
+window/size/window_height_override=768
+
 [input]
 
 mb={

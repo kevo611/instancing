@@ -1,6 +1,8 @@
 class_name Component
 extends Sprite2D
 
+enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE}
+
 var is_dragging: bool
 var _offset: Vector2
 var _z_index: int

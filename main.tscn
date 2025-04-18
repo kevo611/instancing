@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba4rwi82uxlgo"]
+[gd_scene load_steps=6 format=3 uid="uid://ba4rwi82uxlgo"]
 
 [ext_resource type="Script" uid="uid://tvv466g1lloc" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://b0rjm5beylbxk" path="res://exit.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://jndmc6f8m5jk" path="res://icon.svg" id="3_h2yge"]
+
+[sub_resource type="SystemFont" id="SystemFont_0xm2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(32, 32)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_ig7tw")
@@ -10,3 +16,24 @@ script = ExtResource("1_ig7tw")
 scale = Vector2(3, 3)
 texture_normal = ExtResource("2_0xm2m")
 action = "exit"
+
+[node name="ItemList" type="ItemList" parent="."]
+top_level = true
+z_index = 1
+offset_left = 2.0
+offset_top = 195.0
+offset_right = 131.0
+offset_bottom = 416.0
+theme_override_fonts/font = SubResource("SystemFont_0xm2m")
+theme_override_font_sizes/font_size = 32
+item_count = 4
+item_0/text = "Red"
+item_1/text = "Green"
+item_2/text = "Blue"
+item_3/text = "White"
+
+[node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="."]
+position = Vector2(-3, 420)
+texture_normal = ExtResource("3_h2yge")
+shape = SubResource("RectangleShape2D_h2yge")
+action = "duplicate"

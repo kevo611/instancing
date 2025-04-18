@@ -1,23 +1,30 @@
 extends Node2D
 
+enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE}
+
 var component = preload("res://component.tscn")
 var component_red_scene = preload("res://Component_Red.tscn")
 var component_green_scene = preload("res://Component_Green.tscn")
 var component_blue_scene = preload("res://Component_Blue.tscn")
 var component_white_scene = preload("res://Component_White.tscn")
 
+@onready var item_list: ItemList = $ItemList
+@onready var touch_screen_generate_button: TouchScreenButton = $TouchScreenGenerateButton
+
+
 func _ready() -> void:
+	item_list.select(0)
 	var instance = component_red_scene.instantiate()
-	instance.position = Vector2(300,300)
-	add_child(instance)
-	instance = component_green_scene.instantiate()
 	instance.position = Vector2(450,300)
 	add_child(instance)
-	instance = component_blue_scene.instantiate()
+	instance = component_green_scene.instantiate()
 	instance.position = Vector2(600,300)
 	add_child(instance)
-	instance = component_white_scene.instantiate()
+	instance = component_blue_scene.instantiate()
 	instance.position = Vector2(750,300)
+	add_child(instance)
+	instance = component_white_scene.instantiate()
+	instance.position = Vector2(900,300)
 	add_child(instance)
 	pass
 
@@ -25,11 +32,11 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("duplicate"):
 		print("instancing new component")
-		inst(get_global_mouse_position())
+		inst(0, get_global_mouse_position())
 	pass
 
 
-func inst(pos):
+func inst(_group: int, pos):
 	var instance = component_red_scene.instantiate()
 	instance.position = pos
 	add_child(instance)
@@ -55,30 +62,28 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	var choice:int
 	var _pos: Vector2 = Vector2.ZERO
-	
-	#if color_choice.get_selected_items().size() > 0:
-		#choice = color_choice.get_selected_items()[0]
-		#print(choice)
-		#print(_pos)
+
 	
 	#escape or exit button
 	if event is InputEventAction and event.action == "exit":
 		get_tree().quit()
-	elif event is InputEventAction and event.action == "duplicate" and choice == 0:
+	elif event is InputEventAction and event.action == "duplicate":
+		if touch_screen_generate_button.shape.get_rect().has_point(get_global_mouse_position()):
+			return
+		var instance
+		if item_list.get_selected_items().size() > 0:
+			if item_list.get_selected_items().get(0) == COLORS.COLOR_RED:
+				instance = component_red_scene.instantiate()
+			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GREEN:
+				instance = component_green_scene.instantiate()
+			elif item_list.get_selected_items().get(0) == COLORS.COLOR_BLUE:
+				instance = component_blue_scene.instantiate()
+			elif item_list.get_selected_items().get(0) == COLORS.COLOR_WHITE:
+				instance = component_white_scene.instantiate()
 		
-		var new_component = component._duplicate(0, Vector2(250,250))
-		
-		if new_component:
-			new_component.position = _pos
-			new_component.scale = Vector2(1.25,1.25)
+			instance.position = Vector2(300,650)
+			add_child(instance)
 			print("spawning new red component")
-		
-	elif event.action == 1:
-		print("green")
-	elif event.action == 2:
-		print("blue")
-	elif event.action == 3:
-		print("white")
 	
 	#_unhandled_input
 	pass
