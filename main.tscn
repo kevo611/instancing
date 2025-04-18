@@ -23,9 +23,9 @@ action = "exit"
 top_level = true
 z_index = 1
 offset_left = 2.0
-offset_top = 191.0
+offset_top = 197.0
 offset_right = 188.0
-offset_bottom = 414.0
+offset_bottom = 420.0
 theme_override_fonts/font = SubResource("SystemFont_0xm2m")
 theme_override_font_sizes/font_size = 32
 item_count = 27
@@ -58,7 +58,8 @@ item_25/text = "Fuchsia"
 item_26/text = "Cyan"
 
 [node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="Node2D"]
-position = Vector2(-3, 420)
+position = Vector2(-3, 424)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("3_h2yge")
 shape = SubResource("RectangleShape2D_h2yge")
 action = "duplicate"
