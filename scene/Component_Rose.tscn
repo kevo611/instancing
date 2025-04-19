@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://casnxkfe1nk66"]
+
+[ext_resource type="Texture2D" uid="uid://dcet16a8upiha" path="res://asset/circle_rose.png" id="1_nillg"]
+[ext_resource type="Script" uid="uid://4mcoknirkkqn" path="res://script/Component_Rose.gd" id="2_nillg"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_nillg")
+script = ExtResource("2_nillg")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

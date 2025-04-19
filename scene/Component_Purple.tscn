@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b846buj1oampr"]
+
+[ext_resource type="Texture2D" uid="uid://tucsf2nhpxo6" path="res://asset/circle_purple.png" id="1_w6m5s"]
+[ext_resource type="Script" uid="uid://b31v6ufohbdoy" path="res://script/Component_Purple.gd" id="2_w6m5s"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_w6m5s")
+script = ExtResource("2_w6m5s")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

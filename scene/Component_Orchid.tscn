@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://gb12eehi7ok4"]
+
+[ext_resource type="Texture2D" uid="uid://bsiqelhmwqy14" path="res://asset/circle_orchid.png" id="1_wldy2"]
+[ext_resource type="Script" uid="uid://dxmcgn76w1pmx" path="res://script/Component_Orchid.gd" id="2_wldy2"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_wldy2")
+script = ExtResource("2_wldy2")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

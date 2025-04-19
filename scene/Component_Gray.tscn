@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://by5wos1e26cmu"]
+
+[ext_resource type="Texture2D" uid="uid://cub86rbvs025k" path="res://asset/circle_gray.png" id="1_agl2y"]
+[ext_resource type="Script" uid="uid://bhhat4dx4wgb5" path="res://script/Component_Gray.gd" id="2_agl2y"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_agl2y")
+script = ExtResource("2_agl2y")
+metadata/_custom_type_script = "uid://chyxxp3scyt23"

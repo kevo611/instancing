@@ -13,7 +13,7 @@ config_version=5
 config/name="instancing"
 run/main_scene="uid://ba4rwi82uxlgo"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://asset/icon.svg"
 
 [display]
 
