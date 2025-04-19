@@ -37,8 +37,8 @@ var component_leafgreen_scene = preload("res://scene/Component_Leafgreen.tscn")
 var component_indigo_scene = preload("res://scene/Component_Indigo.tscn")
 var component_cyan_scene = preload("res://scene/Component_Cyan.tscn")
 
-@onready var item_list: ItemList = $Node2D/ItemList
-@onready var touch_screen_generate_button: TouchScreenButton = $Node2D/TouchScreenGenerateButton
+@onready var item_list: ItemList = $UI/ItemList
+@onready var touch_screen_generate_button: TouchScreenButton = $UI/TouchScreenGenerateButton
 
 @export var spawn_position = Vector2(150,700)
 
@@ -220,6 +220,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				_group = COLORS.COLOR_CYAN
 
 			#spawn a new color component 
-			inst(_group, spawn_position)#Vector2(150,700))
+			inst(_group, spawn_position)
 	#_unhandled_input
 	pass

@@ -14,14 +14,14 @@ size = Vector2(128, 128)
 [node name="main" type="CanvasLayer"]
 script = ExtResource("1_wp4xf")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="UI" type="Node2D" parent="."]
 
-[node name="TouchScreenExitButton" type="TouchScreenButton" parent="Node2D"]
+[node name="TouchScreenExitButton" type="TouchScreenButton" parent="UI"]
 scale = Vector2(3, 3)
 texture_normal = ExtResource("2_brvut")
 action = "exit"
 
-[node name="ItemList" type="ItemList" parent="Node2D"]
+[node name="ItemList" type="ItemList" parent="UI"]
 top_level = true
 z_index = 1
 offset_left = 2.0
@@ -59,7 +59,7 @@ item_23/text = "Leafgreen"
 item_24/text = "Indigo"
 item_25/text = "Cyan"
 
-[node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="Node2D"]
+[node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="UI"]
 position = Vector2(-3, 424)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("3_0ha60")
