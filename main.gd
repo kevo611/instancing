@@ -1,6 +1,13 @@
 extends CanvasLayer
 
-enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, COLOR_GOLD, COLOR_GRAY, COLOR_BLACK, COLOR_YELLOW, COLOR_WEBPURPLE, COLOR_VIOLETRED, COLOR_VIOLET, COLOR_TEAL, COLOR_SKYBLUE, COLOR_SILVER, COLOR_ROSE, COLOR_REBECCAPURPLE, COLOR_PURPLE, COLOR_ORCHID, COLOR_ORANGE, COLOR_OCEANGREEN, COLOR_MISTYROSE, COLOR_MAROON, COLOR_MAGENTA, COLOR_LEAFGREEN, COLOR_INDIGO,COLOR_CYAN}
+enum COLORS { \
+	COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, \
+	COLOR_GOLD, COLOR_GRAY, COLOR_BLACK, COLOR_YELLOW, \
+	COLOR_WEBPURPLE, COLOR_VIOLETRED, COLOR_VIOLET, COLOR_TEAL, \
+	COLOR_SKYBLUE, COLOR_SILVER, COLOR_ROSE, 	COLOR_REBECCAPURPLE, \
+	COLOR_PURPLE, COLOR_ORCHID, COLOR_ORANGE, COLOR_OCEANGREEN, \
+	COLOR_MISTYROSE, COLOR_MAROON, COLOR_MAGENTA, COLOR_LEAFGREEN, \
+	COLOR_INDIGO, COLOR_CYAN}
 
 var component_red_scene = preload("res://Component_Red.tscn")
 var component_green_scene = preload("res://Component_Green.tscn")
@@ -112,7 +119,6 @@ func _ready() -> void:
 	instance = component_cyan_scene.instantiate()
 	instance.position = Vector2(1050,668)
 	add_child(instance)
-	
 	pass
 
 func _physics_process(_delta: float) -> void:
@@ -123,19 +129,17 @@ func inst(_group: int, pos):
 	var instance = component_red_scene.instantiate()
 	instance.position = pos
 	add_child(instance)
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	#shut down on escape
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			get_tree().quit()
-	
 	#ignore these events
 	if event is InputEventMouseButton or event is InputEventMouseMotion or event is InputEventScreenTouch or event is InputEventKey or event is InputEventScreenDrag or event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		return
-	
-	var _pos: Vector2 = Vector2.ZERO
-
+		return	
+	#var _pos: Vector2 = Vector2.ZERO
 	#escape or exit button
 	if event is InputEventAction and event.action == "exit":
 		get_tree().quit()
@@ -197,10 +201,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				instance = component_indigo_scene.instantiate()
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_CYAN:
 				instance = component_cyan_scene.instantiate()
-		
+
 			instance.position = Vector2(150,700)
 			add_child(instance)
 			print("spawning new component")
-	
 	#_unhandled_input
 	pass
