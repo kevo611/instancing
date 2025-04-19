@@ -5,8 +5,6 @@ enum COLORS {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, COLOR_GOLD, COLOR_
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-
-
 var is_dragging: bool
 var _offset: Vector2
 var _z_index: int
@@ -43,8 +41,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			global_position = event.position
 			is_dragging = true
 			move_to_front()
-		
-	
 	elif event is InputEventScreenTouch and !event.pressed:
 		
 		#if not clicking on sprite return
