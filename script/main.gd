@@ -47,6 +47,11 @@ func _ready() -> void:
 	item_list.select(0)
 	
 	#poplate color component palette grid
+	#display_palette()
+	inst(COLORS.COLOR_GOLD, Vector2(420,420))
+	pass
+
+func display_palette() -> void:
 	inst(COLORS.COLOR_RED, Vector2(450,90))
 	inst(COLORS.COLOR_GREEN, Vector2(600,90))
 	inst(COLORS.COLOR_BLUE, Vector2(750,90))
@@ -73,6 +78,7 @@ func _ready() -> void:
 	inst(COLORS.COLOR_LEAFGREEN, Vector2(750,668))
 	inst(COLORS.COLOR_INDIGO, Vector2(900,668))
 	inst(COLORS.COLOR_CYAN, Vector2(1050,668))
+	#func display_palette() -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
