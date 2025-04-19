@@ -9,6 +9,7 @@ enum COLORS { \
 	COLOR_MISTYROSE, COLOR_MAROON, COLOR_MAGENTA, COLOR_LEAFGREEN, \
 	COLOR_INDIGO, COLOR_CYAN}
 
+#preload all the color component scenes
 var component_red_scene = preload("res://scene/Component_Red.tscn")
 var component_green_scene = preload("res://scene/Component_Green.tscn")
 var component_blue_scene = preload("res://scene/Component_Blue.tscn")
@@ -39,95 +40,103 @@ var component_cyan_scene = preload("res://scene/Component_Cyan.tscn")
 @onready var item_list: ItemList = $Node2D/ItemList
 @onready var touch_screen_generate_button: TouchScreenButton = $Node2D/TouchScreenGenerateButton
 
+@export var spawn_position = Vector2(150,700)
+
 func _ready() -> void:
+	#default to red selection
 	item_list.select(0)
-	var instance = component_red_scene.instantiate()
-	instance.position = Vector2(450,90)
-	add_child(instance)
-	instance = component_green_scene.instantiate()
-	instance.position = Vector2(600,90)
-	add_child(instance)
-	instance = component_blue_scene.instantiate()
-	instance.position = Vector2(750,90)
-	add_child(instance)
-	instance = component_white_scene.instantiate()
-	instance.position = Vector2(900,90)
-	add_child(instance)
-	instance = component_gold_scene.instantiate()
-	instance.position = Vector2(1050,90)
-	add_child(instance)
-	instance = component_gray_scene.instantiate()
-	instance.position = Vector2(1200,90)
-	add_child(instance)
-	instance = component_black_scene.instantiate()
-	instance.position = Vector2(1350,90)
-	add_child(instance)
-	instance = component_yellow_scene.instantiate()
-	instance.position = Vector2(450,284)
-	add_child(instance)
-	instance = component_webpurple_scene.instantiate()
-	instance.position = Vector2(600,284)
-	add_child(instance)
-	instance = component_violetred_scene.instantiate()
-	instance.position = Vector2(750,284)
-	add_child(instance)
-	instance = component_violet_scene.instantiate()
-	instance.position = Vector2(900,284)
-	add_child(instance)
-	instance = component_teal_scene.instantiate()
-	instance.position = Vector2(1050,284)
-	add_child(instance)
-	instance = component_skyblue_scene.instantiate()
-	instance.position = Vector2(1200,284)
-	add_child(instance)
-	instance = component_silver_scene.instantiate()
-	instance.position = Vector2(1350,284)
-	add_child(instance)
-	instance = component_rose_scene.instantiate()
-	instance.position = Vector2(450,475)
-	add_child(instance)
-	instance = component_rebeccapurple_scene.instantiate()
-	instance.position = Vector2(600,475)
-	add_child(instance)
-	instance = component_purple_scene.instantiate()
-	instance.position = Vector2(750,475)
-	add_child(instance)
-	instance = component_orchid_scene.instantiate()
-	instance.position = Vector2(900,475)
-	add_child(instance)
-	instance = component_orange_scene.instantiate()
-	instance.position = Vector2(1050,475)
-	add_child(instance)
-	instance = component_oceangreen_scene.instantiate()
-	instance.position = Vector2(1200,475)
-	add_child(instance)
-	instance = component_mistyrose_scene.instantiate()
-	instance.position = Vector2(1350,475)
-	add_child(instance)
-	instance = component_maroon_scene.instantiate()
-	instance.position = Vector2(450,668)
-	add_child(instance)
-	instance = component_magenta_scene.instantiate()
-	instance.position = Vector2(600,668)
-	add_child(instance)
-	instance = component_leafgreen_scene.instantiate()
-	instance.position = Vector2(750,668)
-	add_child(instance)
-	instance = component_indigo_scene.instantiate()
-	instance.position = Vector2(900,668)
-	add_child(instance)
-	instance = component_cyan_scene.instantiate()
-	instance.position = Vector2(1050,668)
-	add_child(instance)
+	
+	#poplate color component palette grid
+	inst(COLORS.COLOR_RED, Vector2(450,90))
+	inst(COLORS.COLOR_GREEN, Vector2(600,90))
+	inst(COLORS.COLOR_BLUE, Vector2(750,90))
+	inst(COLORS.COLOR_WHITE, Vector2(900,90))
+	inst(COLORS.COLOR_GOLD, Vector2(1050,90))
+	inst(COLORS.COLOR_GRAY, Vector2(1200,90))
+	inst(COLORS.COLOR_BLACK, Vector2(1350,90))
+	inst(COLORS.COLOR_YELLOW, Vector2(450,284))
+	inst(COLORS.COLOR_WEBPURPLE, Vector2(600,284))
+	inst(COLORS.COLOR_VIOLETRED, Vector2(750,284))
+	inst(COLORS.COLOR_VIOLET, Vector2(900,284))
+	inst(COLORS.COLOR_TEAL, Vector2(1050,284))
+	inst(COLORS.COLOR_SKYBLUE, Vector2(1200,284))
+	inst(COLORS.COLOR_SILVER, Vector2(1350,284))
+	inst(COLORS.COLOR_ROSE, Vector2(450,475))
+	inst(COLORS.COLOR_REBECCAPURPLE, Vector2(600,475))
+	inst(COLORS.COLOR_PURPLE, Vector2(750,475))
+	inst(COLORS.COLOR_ORCHID, Vector2(900,475))
+	inst(COLORS.COLOR_ORANGE, Vector2(1050,475))
+	inst(COLORS.COLOR_OCEANGREEN, Vector2(1200,475))
+	inst(COLORS.COLOR_MISTYROSE, Vector2(1350,475))
+	inst(COLORS.COLOR_MAROON, Vector2(450,668))
+	inst(COLORS.COLOR_MAGENTA, Vector2(600,668))
+	inst(COLORS.COLOR_LEAFGREEN, Vector2(750,668))
+	inst(COLORS.COLOR_INDIGO, Vector2(900,668))
+	inst(COLORS.COLOR_CYAN, Vector2(1050,668))
 	pass
 
 func _physics_process(_delta: float) -> void:
 
 	pass
 
-func inst(_group: int, pos):
-	var instance = component_red_scene.instantiate()
-	instance.position = pos
+#instantiate new color component at desired position
+func inst(_group: int, _pos):
+	var instance
+	match _group:
+		COLORS.COLOR_RED:
+			instance = component_red_scene.instantiate()
+		COLORS.COLOR_GREEN:
+			instance = component_green_scene.instantiate()
+		COLORS.COLOR_BLUE:
+			instance = component_blue_scene.instantiate()
+		COLORS.COLOR_WHITE:
+			instance = component_white_scene.instantiate()
+		COLORS.COLOR_GOLD:
+			instance = component_gold_scene.instantiate()
+		COLORS.COLOR_GRAY:
+			instance = component_gray_scene.instantiate()
+		COLORS.COLOR_BLACK:
+			instance = component_black_scene.instantiate()
+		COLORS.COLOR_YELLOW:
+			instance = component_yellow_scene.instantiate()
+		COLORS.COLOR_WEBPURPLE:
+			instance = component_webpurple_scene.instantiate()
+		COLORS.COLOR_VIOLETRED:
+			instance = component_violetred_scene.instantiate()
+		COLORS.COLOR_VIOLET:
+			instance = component_violet_scene.instantiate()
+		COLORS.COLOR_TEAL:
+			instance = component_teal_scene.instantiate()
+		COLORS.COLOR_SKYBLUE:
+			instance = component_skyblue_scene.instantiate()
+		COLORS.COLOR_SILVER:
+			instance = component_silver_scene.instantiate()
+		COLORS.COLOR_ROSE:
+			instance = component_rose_scene.instantiate()
+		COLORS.COLOR_REBECCAPURPLE:
+			instance = component_rebeccapurple_scene.instantiate()
+		COLORS.COLOR_PURPLE:
+			instance = component_purple_scene.instantiate()
+		COLORS.COLOR_ORCHID:
+			instance = component_orchid_scene.instantiate()
+		COLORS.COLOR_ORANGE:
+			instance = component_orange_scene.instantiate()
+		COLORS.COLOR_OCEANGREEN:
+			instance = component_oceangreen_scene.instantiate()
+		COLORS.COLOR_MISTYROSE:
+			instance = component_mistyrose_scene.instantiate()
+		COLORS.COLOR_MAROON:
+			instance = component_maroon_scene.instantiate()
+		COLORS.COLOR_MAGENTA:
+			instance = component_magenta_scene.instantiate()
+		COLORS.COLOR_LEAFGREEN:
+			instance = component_leafgreen_scene.instantiate()
+		COLORS.COLOR_INDIGO:
+			instance = component_indigo_scene.instantiate()
+		COLORS.COLOR_CYAN:
+			instance = component_cyan_scene.instantiate()
+
+	instance.position = _pos
 	add_child(instance)
 	pass
 
@@ -147,63 +156,64 @@ func _unhandled_input(event: InputEvent) -> void:
 		queue_free()
 		return
 	elif event is InputEventAction and event.action == "duplicate":
-		var instance = component_red_scene.instantiate()
+		var _group
+		#there's always an item selected
 		if item_list.get_selected_items().size() > 0:
+			#store what color is selected
 			if item_list.get_selected_items().get(0) == COLORS.COLOR_RED:
-				instance = component_red_scene.instantiate()
+				_group = COLORS.COLOR_RED
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GREEN:
-				instance = component_green_scene.instantiate()
+				_group = COLORS.COLOR_GREEN
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_BLUE:
-				instance = component_blue_scene.instantiate()
+				_group = COLORS.COLOR_BLUE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_WHITE:
-				instance = component_white_scene.instantiate()
+				_group = COLORS.COLOR_WHITE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GOLD:
-				instance = component_gold_scene.instantiate()
+				_group = COLORS.COLOR_GOLD
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GRAY:
-				instance = component_gray_scene.instantiate()
+				_group = COLORS.COLOR_GRAY
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_BLACK:
-				instance = component_black_scene.instantiate()
+				_group = COLORS.COLOR_BLACK
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_YELLOW:
-				instance = component_yellow_scene.instantiate()
+				_group = COLORS.COLOR_YELLOW
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_WEBPURPLE:
-				instance = component_webpurple_scene.instantiate()
+				_group = COLORS.COLOR_WEBPURPLE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_VIOLETRED:
-				instance = component_violetred_scene.instantiate()
+				_group = COLORS.COLOR_VIOLETRED
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_VIOLET:
-				instance = component_violet_scene.instantiate()
+				_group = COLORS.COLOR_VIOLET
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_TEAL:
-				instance = component_teal_scene.instantiate()
+				_group = COLORS.COLOR_TEAL
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_SKYBLUE:
-				instance = component_skyblue_scene.instantiate()
+				_group = COLORS.COLOR_SKYBLUE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_SILVER:
-				instance = component_silver_scene.instantiate()
+				_group = COLORS.COLOR_SILVER
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_ROSE:
-				instance = component_rose_scene.instantiate()
+				_group = COLORS.COLOR_ROSE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_REBECCAPURPLE:
-				instance = component_rebeccapurple_scene.instantiate()
+				_group = COLORS.COLOR_REBECCAPURPLE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_PURPLE:
-				instance = component_purple_scene.instantiate()
+				_group = COLORS.COLOR_PURPLE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_ORCHID:
-				instance = component_orchid_scene.instantiate()
+				_group = COLORS.COLOR_ORCHID
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_ORANGE:
-				instance = component_orange_scene.instantiate()
+				_group = COLORS.COLOR_ORANGE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_OCEANGREEN:
-				instance = component_oceangreen_scene.instantiate()
+				_group = COLORS.COLOR_OCEANGREEN
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_MISTYROSE:
-				instance = component_mistyrose_scene.instantiate()
+				_group = COLORS.COLOR_MISTYROSE
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_MAROON:
-				instance = component_maroon_scene.instantiate()
+				_group = COLORS.COLOR_MAROON
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_MAGENTA:
-				instance = component_magenta_scene.instantiate()
+				_group = COLORS.COLOR_MAGENTA
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_LEAFGREEN:
-				instance = component_leafgreen_scene.instantiate()
+				_group = COLORS.COLOR_LEAFGREEN
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_INDIGO:
-				instance = component_indigo_scene.instantiate()
+				_group = COLORS.COLOR_INDIGO
 			elif item_list.get_selected_items().get(0) == COLORS.COLOR_CYAN:
-				instance = component_cyan_scene.instantiate()
+				_group = COLORS.COLOR_CYAN
 
-			instance.position = Vector2(150,700)
-			add_child(instance)
-			print("spawning new component")
+			#spawn a new color component 
+			inst(_group, spawn_position)#Vector2(150,700))
 	#_unhandled_input
 	pass
