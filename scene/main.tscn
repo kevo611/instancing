@@ -57,9 +57,10 @@ offset_left = 2.0
 offset_top = 197.0
 offset_right = 191.0
 offset_bottom = 448.0
+size_flags_vertical = 3
 theme = SubResource("Theme_h2yge")
 theme_override_fonts/font = SubResource("SystemFont_0xm2m")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 theme_override_styles/selected = SubResource("StyleBoxFlat_0ha60")
 theme_override_styles/selected_focus = SubResource("StyleBoxFlat_4j5ol")
 item_count = 26
@@ -162,4 +163,5 @@ max_value = 2.0
 step = 0.25
 value = 1.25
 
+[connection signal="item_selected" from="UI/ItemListColors" to="." method="_on_item_list_colors_item_selected"]
 [connection signal="value_changed" from="UI/SliderSize" to="." method="_on_slider_size_value_changed"]

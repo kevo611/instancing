@@ -43,13 +43,18 @@ var component_cyan_scene = preload("res://scene/Component_Cyan.tscn")
 @onready var slider_size: HSlider = $UI/SliderSize
 @onready var label_size_value: Label = $UI/LabelSizeValue
 
+
 @export var spawn_position = Vector2(300,516)
 @export var scale_default = 1
 
 func _ready() -> void:
 	#default to red selection
 	item_list_colors.select(0)
+	#default to Opacity
 	item_list_right_click_options.select(0)
+	#set font to dark gray
+	item_list_colors.add_theme_color_override("font_selected_color", Color.DARK_GRAY)
+	item_list_colors.add_theme_color_override("font_hovered_selected_color", Color.DARK_GRAY)
 	
 	#poplate color component palette grid
 	#display_palette()
@@ -236,3 +241,66 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_slider_size_value_changed(value: float) -> void:
 	label_size_value.text = str(value)
 	pass
+
+
+func _on_item_list_colors_item_selected(index: int) -> void:
+	#clear the background for all items in list
+	for i in item_list_colors.item_count:
+		item_list_colors.set_item_custom_bg_color(i, Color.DIM_GRAY)
+
+	#set the background color to match the color choice
+	match index:
+		0:
+			item_list_colors.set_item_custom_bg_color(index, Color.RED)
+		1:
+			item_list_colors.set_item_custom_bg_color(index, Color.GREEN)
+		2:
+			item_list_colors.set_item_custom_bg_color(index, Color.BLUE)
+		3:
+			item_list_colors.set_item_custom_bg_color(index, Color.WHITE)
+		4:
+			item_list_colors.set_item_custom_bg_color(index, Color.GOLD)
+		5:
+			item_list_colors.set_item_custom_bg_color(index, Color.GRAY)
+		6:
+			item_list_colors.set_item_custom_bg_color(index, Color.BLACK)
+		7:
+			item_list_colors.set_item_custom_bg_color(index, Color.YELLOW)
+		8:
+			item_list_colors.set_item_custom_bg_color(index, Color.WEB_PURPLE)
+		9:
+			item_list_colors.set_item_custom_bg_color(index, Color.PALE_VIOLET_RED)
+		10:
+			item_list_colors.set_item_custom_bg_color(index, Color.VIOLET)
+		11:
+			item_list_colors.set_item_custom_bg_color(index, Color.TEAL)
+		12:
+			item_list_colors.set_item_custom_bg_color(index, Color.SKY_BLUE)
+		13:
+			item_list_colors.set_item_custom_bg_color(index, Color.SILVER)
+		14:
+			item_list_colors.set_item_custom_bg_color(index, Color.DEEP_PINK)
+		15:
+			item_list_colors.set_item_custom_bg_color(index, Color.REBECCA_PURPLE)
+		16:
+			item_list_colors.set_item_custom_bg_color(index, Color.PURPLE)
+		17:
+			item_list_colors.set_item_custom_bg_color(index, Color.ORCHID)
+		18:
+			item_list_colors.set_item_custom_bg_color(index, Color.ORANGE)
+		19:
+			item_list_colors.set_item_custom_bg_color(index, Color.SEA_GREEN)
+		20:
+			item_list_colors.set_item_custom_bg_color(index, Color.MISTY_ROSE)
+		21:
+			item_list_colors.set_item_custom_bg_color(index, Color.MAROON)
+		22:
+			item_list_colors.set_item_custom_bg_color(index, Color.MAGENTA)
+		23:
+			item_list_colors.set_item_custom_bg_color(index, Color(0.5,1,0,1))
+		24:
+			item_list_colors.set_item_custom_bg_color(index, Color.INDIGO)
+		25:
+			item_list_colors.set_item_custom_bg_color(index, Color.CYAN)		
+		#_on_item_list_colors_item_selected
+		pass
