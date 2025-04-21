@@ -40,8 +40,11 @@ var component_cyan_scene = preload("res://scene/Component_Cyan.tscn")
 @onready var item_list_colors: ItemList = $UI/ItemListColors
 @onready var item_list_right_click_options: ItemList = $UI/ItemListRightClickOptions
 @onready var touch_screen_generate_button: TouchScreenButton = $UI/TouchScreenGenerateButton
+@onready var slider_size: HSlider = $UI/SliderSize
+@onready var label_size_value: Label = $UI/LabelSizeValue
 
 @export var spawn_position = Vector2(300,516)
+@export var scale_default = 1
 
 func _ready() -> void:
 	#default to red selection
@@ -88,8 +91,8 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 #instantiate new color component at desired position
-func inst(_group: int, _pos):
-	var instance
+func inst(_group: int, _pos, _scale: Vector2 = Vector2(1.0,1.0)):
+	var instance: Component
 	match _group:
 		COLORS.COLOR_RED:
 			instance = component_red_scene.instantiate()
@@ -145,6 +148,7 @@ func inst(_group: int, _pos):
 			instance = component_cyan_scene.instantiate()
 
 	instance.position = _pos
+	instance.scale = Vector2(slider_size.value, slider_size.value)
 	add_child(instance)
 	pass
 
@@ -223,6 +227,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_CYAN:
 				_group = COLORS.COLOR_CYAN
 			#spawn a new color component 
-	inst(_group, spawn_position)
+
+	inst(_group, spawn_position, Vector2(slider_size.value,slider_size.value))
 	#_unhandled_input
+	pass
+
+
+func _on_slider_size_value_changed(value: float) -> void:
+	label_size_value.text = str(value)
 	pass

@@ -20,7 +20,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == 2:
 		if get_rect().has_point(to_local(event.position)):
 			if item_list_right_click_options.is_selected(0):
-				#Opacity option selected
+				#opacity option selected
 				#make foremost
 				move_to_front()
 				#toggle translucence
@@ -47,6 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		#if touching the tile
 		if get_rect().has_point(to_local(event.position)):
+			#calculate click offset
 			_offset = position - event.position
 			global_position = event.position
 			is_dragging = true
@@ -59,6 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if is_dragging:
 			#if clicking the sprite
 			if get_rect().has_point(to_local(event.position)):
+				#correct position using offset
 				position = event.position + _offset
 	#_unhandled_input
 	pass

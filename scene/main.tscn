@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ba4rwi82uxlgo"]
+[gd_scene load_steps=16 format=3 uid="uid://ba4rwi82uxlgo"]
 
 [ext_resource type="Script" uid="uid://tvv466g1lloc" path="res://script/main.gd" id="1_wp4xf"]
 [ext_resource type="Texture2D" uid="uid://b0rjm5beylbxk" path="res://asset/exit.png" id="2_brvut"]
@@ -20,10 +20,6 @@ bg_color = Color(1, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(128, 128)
 
-[sub_resource type="LabelSettings" id="LabelSettings_p1hux"]
-font_size = 24
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_4j5ol"]
 font_size = 32
 font_color = Color(1, 1, 1, 0.509804)
@@ -35,6 +31,14 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_0ha60"]
 default_font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1hux"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_of57s"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="main" type="CanvasLayer"]
 script = ExtResource("1_wp4xf")
@@ -93,30 +97,6 @@ texture_normal = ExtResource("3_0ha60")
 shape = SubResource("RectangleShape2D_h2yge")
 action = "duplicate"
 
-[node name="LabelSize" type="Label" parent="UI/TouchScreenGenerateButton"]
-anchors_preset = -1
-anchor_left = -0.005
-anchor_top = -4.444
-anchor_right = 0.972
-anchor_bottom = -2.319
-offset_left = 137.882
-offset_top = 341.832
-offset_right = 137.826
-offset_bottom = 103.832
-text = "Size:"
-label_settings = SubResource("LabelSettings_p1hux")
-
-[node name="SliderSize" type="HSlider" parent="UI/TouchScreenGenerateButton"]
-z_index = 1
-offset_left = 136.084
-offset_top = -193.422
-offset_right = 265.084
-offset_bottom = -177.422
-min_value = 1.0
-max_value = 5.0
-step = 0.25
-value = 1.0
-
 [node name="LabelGenerate" type="Label" parent="UI"]
 offset_left = 20.0
 offset_top = 438.0
@@ -149,3 +129,37 @@ scale = Vector2(3, 3)
 texture_normal = ExtResource("4_brvut")
 texture_pressed = ExtResource("5_0ha60")
 action = "tab"
+
+[node name="LabelSize" type="Label" parent="UI"]
+anchors_preset = -1
+anchor_left = -0.005
+anchor_top = -4.444
+anchor_right = 0.972
+anchor_bottom = -2.319
+offset_left = 203.719
+offset_top = 212.585
+offset_right = 255.719
+offset_bottom = 246.585
+text = "Size:"
+label_settings = SubResource("LabelSettings_p1hux")
+
+[node name="LabelSizeValue" type="Label" parent="UI"]
+offset_left = 262.0
+offset_top = 212.0
+offset_right = 302.0
+offset_bottom = 246.0
+text = "1.0"
+label_settings = SubResource("LabelSettings_of57s")
+
+[node name="SliderSize" type="HSlider" parent="UI"]
+z_index = 1
+offset_left = 202.0
+offset_top = 248.0
+offset_right = 331.0
+offset_bottom = 264.0
+min_value = 0.25
+max_value = 2.0
+step = 0.25
+value = 1.25
+
+[connection signal="value_changed" from="UI/SliderSize" to="." method="_on_slider_size_value_changed"]
