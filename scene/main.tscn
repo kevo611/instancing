@@ -1,15 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba4rwi82uxlgo"]
+[gd_scene load_steps=15 format=3 uid="uid://ba4rwi82uxlgo"]
 
 [ext_resource type="Script" uid="uid://tvv466g1lloc" path="res://script/main.gd" id="1_wp4xf"]
 [ext_resource type="Texture2D" uid="uid://b0rjm5beylbxk" path="res://asset/exit.png" id="2_brvut"]
 [ext_resource type="Texture2D" uid="uid://jndmc6f8m5jk" path="res://asset/icon.svg" id="3_0ha60"]
+[ext_resource type="Texture2D" uid="uid://ctf15cspblwpc" path="res://asset/tab.png" id="4_brvut"]
+[ext_resource type="Texture2D" uid="uid://btubd0tdv05cp" path="res://asset/tab_pressed.png" id="5_0ha60"]
 
 [sub_resource type="Theme" id="Theme_h2yge"]
+default_base_scale = 1.5
 
 [sub_resource type="SystemFont" id="SystemFont_0xm2m"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ha60"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j5ol"]
+bg_color = Color(1, 0, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(128, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1hux"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4j5ol"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.509804)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ha60"]
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_0ha60"]
+default_font_size = 32
 
 [node name="main" type="CanvasLayer"]
 script = ExtResource("1_wp4xf")
@@ -21,16 +46,18 @@ scale = Vector2(3, 3)
 texture_normal = ExtResource("2_brvut")
 action = "exit"
 
-[node name="ItemList" type="ItemList" parent="UI"]
+[node name="ItemListColors" type="ItemList" parent="UI"]
 top_level = true
 z_index = 1
 offset_left = 2.0
 offset_top = 197.0
-offset_right = 188.0
-offset_bottom = 420.0
+offset_right = 191.0
+offset_bottom = 448.0
 theme = SubResource("Theme_h2yge")
 theme_override_fonts/font = SubResource("SystemFont_0xm2m")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/selected = SubResource("StyleBoxFlat_0ha60")
+theme_override_styles/selected_focus = SubResource("StyleBoxFlat_4j5ol")
 item_count = 26
 item_0/text = "Red"
 item_1/text = "Green"
@@ -60,8 +87,65 @@ item_24/text = "Indigo"
 item_25/text = "Cyan"
 
 [node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="UI"]
-position = Vector2(-3, 424)
-scale = Vector2(1.5, 1.5)
+position = Vector2(0, 452)
+scale = Vector2(1.48438, 1.05469)
 texture_normal = ExtResource("3_0ha60")
 shape = SubResource("RectangleShape2D_h2yge")
 action = "duplicate"
+
+[node name="LabelSize" type="Label" parent="UI/TouchScreenGenerateButton"]
+anchors_preset = -1
+anchor_left = -0.005
+anchor_top = -4.444
+anchor_right = 0.972
+anchor_bottom = -2.319
+offset_left = 137.882
+offset_top = 341.832
+offset_right = 137.826
+offset_bottom = 103.832
+text = "Size:"
+label_settings = SubResource("LabelSettings_p1hux")
+
+[node name="SliderSize" type="HSlider" parent="UI/TouchScreenGenerateButton"]
+z_index = 1
+offset_left = 136.084
+offset_top = -193.422
+offset_right = 265.084
+offset_bottom = -177.422
+min_value = 1.0
+max_value = 5.0
+step = 0.25
+value = 1.0
+
+[node name="LabelGenerate" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 438.0
+offset_right = 184.0
+offset_bottom = 493.0
+text = "Generate"
+label_settings = SubResource("LabelSettings_4j5ol")
+
+[node name="LabelSettings" type="Label" parent="UI"]
+z_index = 1
+offset_left = 24.0
+offset_top = 594.0
+offset_right = 203.0
+offset_bottom = 639.0
+text = "Long Press Setting"
+label_settings = SubResource("LabelSettings_0ha60")
+
+[node name="ItemListRightClickOptions" type="ItemList" parent="UI"]
+offset_top = 617.0
+offset_right = 190.0
+offset_bottom = 724.0
+theme = SubResource("Theme_0ha60")
+item_count = 2
+item_0/text = "Opacity"
+item_1/text = "Delete"
+
+[node name="TouchScreenTabButton" type="TouchScreenButton" parent="UI"]
+position = Vector2(196, 4.00006)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("4_brvut")
+texture_pressed = ExtResource("5_0ha60")
+action = "tab"

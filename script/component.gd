@@ -1,6 +1,8 @@
 class_name Component
 extends Sprite2D
 
+@onready var item_list_right_click_options: ItemList = $"../UI/ItemListRightClickOptions"
+
 enum COLORS { \
 	COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE, \
 	COLOR_GOLD, COLOR_GRAY, COLOR_BLACK, COLOR_YELLOW, \
@@ -17,14 +19,22 @@ func _unhandled_input(event: InputEvent) -> void:
 	#delete component if right clicked/long pressed
 	if event is InputEventMouseButton and event.pressed and event.button_index == 2:
 		if get_rect().has_point(to_local(event.position)):
-			#make foremost
-			move_to_front()
-			#toggle translucence
-			if modulate.a8 == 255:
-				modulate.a8 = 128
-			else:
-				modulate.a8 = 255
-			return
+			if item_list_right_click_options.is_selected(0):
+				#Opacity option selected
+				#make foremost
+				move_to_front()
+				#toggle translucence
+				if modulate.a8 == 255:
+					modulate.a8 = 128
+				else:
+					modulate.a8 = 255
+				print("Changing Opacity")
+				return
+			elif item_list_right_click_options.is_selected(1):
+				#Delete option selected
+				queue_free()
+				print("Delete")
+				return
 	#ignore these events
 	if event is InputEventMouseButton or event is InputEventMouseMotion or event is InputEventKey:
 		return

@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba4rwi82uxlgo"]
+
+[ext_resource type="Script" uid="uid://tvv466g1lloc" path="res://script/main.gd" id="1_wp4xf"]
+[ext_resource type="Texture2D" uid="uid://b0rjm5beylbxk" path="res://asset/exit.png" id="2_brvut"]
+[ext_resource type="Texture2D" uid="uid://jndmc6f8m5jk" path="res://asset/icon.svg" id="3_0ha60"]
+[ext_resource type="Texture2D" uid="uid://ctf15cspblwpc" path="res://asset/tab.png" id="4_brvut"]
+[ext_resource type="Texture2D" uid="uid://btubd0tdv05cp" path="res://asset/tab_pressed.png" id="5_0ha60"]
+
+[sub_resource type="Theme" id="Theme_h2yge"]
+
+[sub_resource type="SystemFont" id="SystemFont_0xm2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(128, 128)
+
+[node name="main" type="CanvasLayer"]
+script = ExtResource("1_wp4xf")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="TouchScreenExitButton" type="TouchScreenButton" parent="UI"]
+scale = Vector2(3, 3)
+texture_normal = ExtResource("2_brvut")
+action = "exit"
+
+[node name="ItemListColors" type="ItemList" parent="UI"]
+top_level = true
+z_index = 1
+offset_left = 2.0
+offset_top = 197.0
+offset_right = 188.0
+offset_bottom = 420.0
+theme = SubResource("Theme_h2yge")
+theme_override_fonts/font = SubResource("SystemFont_0xm2m")
+theme_override_font_sizes/font_size = 32
+item_count = 26
+item_0/text = "Red"
+item_1/text = "Green"
+item_2/text = "Blue"
+item_3/text = "White"
+item_4/text = "Gold"
+item_5/text = "Gray"
+item_6/text = "Black"
+item_7/text = "Yellow"
+item_8/text = "Webpurple"
+item_9/text = "Violetred"
+item_10/text = "Violet"
+item_11/text = "Teal"
+item_12/text = "Skyblue"
+item_13/text = "Silver"
+item_14/text = "Rose"
+item_15/text = "Rebeccapurple"
+item_16/text = "Purple"
+item_17/text = "Orchid"
+item_18/text = "Orange"
+item_19/text = "Oceangreen"
+item_20/text = "Mistyrose"
+item_21/text = "Maroon"
+item_22/text = "Magenta"
+item_23/text = "Leafgreen"
+item_24/text = "Indigo"
+item_25/text = "Cyan"
+
+[node name="TouchScreenGenerateButton" type="TouchScreenButton" parent="UI"]
+position = Vector2(-3, 424)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("3_0ha60")
+shape = SubResource("RectangleShape2D_h2yge")
+action = "duplicate"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="UI/TouchScreenGenerateButton"]
+position = Vector2(132.667, -280)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_brvut")
+texture_pressed = ExtResource("5_0ha60")
+action = "tab"
+
+[node name="ItemListRightClickOptions" type="ItemList" parent="UI"]
+offset_left = 2.0
+offset_top = 620.0
+offset_right = 141.0
+offset_bottom = 685.0
+item_count = 2
+item_0/text = "Change Opacity"
+item_1/text = "Delete"

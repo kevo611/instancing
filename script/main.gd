@@ -37,18 +37,20 @@ var component_leafgreen_scene = preload("res://scene/Component_Leafgreen.tscn")
 var component_indigo_scene = preload("res://scene/Component_Indigo.tscn")
 var component_cyan_scene = preload("res://scene/Component_Cyan.tscn")
 
-@onready var item_list: ItemList = $UI/ItemList
+@onready var item_list_colors: ItemList = $UI/ItemListColors
+@onready var item_list_right_click_options: ItemList = $UI/ItemListRightClickOptions
 @onready var touch_screen_generate_button: TouchScreenButton = $UI/TouchScreenGenerateButton
 
-@export var spawn_position = Vector2(150,700)
+@export var spawn_position = Vector2(300,516)
 
 func _ready() -> void:
 	#default to red selection
-	item_list.select(0)
+	item_list_colors.select(0)
+	item_list_right_click_options.select(0)
 	
 	#poplate color component palette grid
 	#display_palette()
-	inst(COLORS.COLOR_GOLD, Vector2(420,420))
+	inst(COLORS.COLOR_GOLD, Vector2(600,450))
 	pass
 
 func display_palette() -> void:
@@ -156,70 +158,71 @@ func _unhandled_input(event: InputEvent) -> void:
 		return	
 	#var _pos: Vector2 = Vector2.ZERO
 	#escape or exit button
+	
+	var _group
 	if event is InputEventAction and event.action == "exit":
 		get_tree().quit()
+		return
 	elif event is InputEventAction and event.action == "rb":
 		queue_free()
 		return
 	elif event is InputEventAction and event.action == "duplicate":
-		var _group
 		#there's always an item selected
-		if item_list.get_selected_items().size() > 0:
+		if item_list_colors.get_selected_items().size() > 0:
 			#store what color is selected
-			if item_list.get_selected_items().get(0) == COLORS.COLOR_RED:
+			if item_list_colors.get_selected_items().get(0) == COLORS.COLOR_RED:
 				_group = COLORS.COLOR_RED
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GREEN:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_GREEN:
 				_group = COLORS.COLOR_GREEN
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_BLUE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_BLUE:
 				_group = COLORS.COLOR_BLUE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_WHITE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_WHITE:
 				_group = COLORS.COLOR_WHITE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GOLD:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_GOLD:
 				_group = COLORS.COLOR_GOLD
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_GRAY:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_GRAY:
 				_group = COLORS.COLOR_GRAY
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_BLACK:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_BLACK:
 				_group = COLORS.COLOR_BLACK
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_YELLOW:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_YELLOW:
 				_group = COLORS.COLOR_YELLOW
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_WEBPURPLE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_WEBPURPLE:
 				_group = COLORS.COLOR_WEBPURPLE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_VIOLETRED:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_VIOLETRED:
 				_group = COLORS.COLOR_VIOLETRED
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_VIOLET:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_VIOLET:
 				_group = COLORS.COLOR_VIOLET
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_TEAL:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_TEAL:
 				_group = COLORS.COLOR_TEAL
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_SKYBLUE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_SKYBLUE:
 				_group = COLORS.COLOR_SKYBLUE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_SILVER:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_SILVER:
 				_group = COLORS.COLOR_SILVER
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_ROSE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_ROSE:
 				_group = COLORS.COLOR_ROSE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_REBECCAPURPLE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_REBECCAPURPLE:
 				_group = COLORS.COLOR_REBECCAPURPLE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_PURPLE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_PURPLE:
 				_group = COLORS.COLOR_PURPLE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_ORCHID:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_ORCHID:
 				_group = COLORS.COLOR_ORCHID
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_ORANGE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_ORANGE:
 				_group = COLORS.COLOR_ORANGE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_OCEANGREEN:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_OCEANGREEN:
 				_group = COLORS.COLOR_OCEANGREEN
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_MISTYROSE:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_MISTYROSE:
 				_group = COLORS.COLOR_MISTYROSE
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_MAROON:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_MAROON:
 				_group = COLORS.COLOR_MAROON
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_MAGENTA:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_MAGENTA:
 				_group = COLORS.COLOR_MAGENTA
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_LEAFGREEN:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_LEAFGREEN:
 				_group = COLORS.COLOR_LEAFGREEN
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_INDIGO:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_INDIGO:
 				_group = COLORS.COLOR_INDIGO
-			elif item_list.get_selected_items().get(0) == COLORS.COLOR_CYAN:
+			elif item_list_colors.get_selected_items().get(0) == COLORS.COLOR_CYAN:
 				_group = COLORS.COLOR_CYAN
-
 			#spawn a new color component 
-			inst(_group, spawn_position)
+	inst(_group, spawn_position)
 	#_unhandled_input
 	pass
