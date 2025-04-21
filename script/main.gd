@@ -45,20 +45,21 @@ var component_cyan_scene = preload("res://scene/Component_Cyan.tscn")
 
 
 @export var spawn_position = Vector2(300,516)
-@export var scale_default = 1
+@export var scale_default = Vector2.ONE
 
 func _ready() -> void:
+	slider_size.value = 1.0
 	#default to red selection
 	item_list_colors.select(0)
-	#default to Opacity
-	item_list_right_click_options.select(0)
+	#default to Delete
+	item_list_right_click_options.select(1)
 	#set font to dark gray
 	item_list_colors.add_theme_color_override("font_selected_color", Color.DARK_GRAY)
 	item_list_colors.add_theme_color_override("font_hovered_selected_color", Color.DARK_GRAY)
 	
 	#poplate color component palette grid
 	#display_palette()
-	inst(COLORS.COLOR_GOLD, Vector2(600,450))
+	#inst(COLORS.COLOR_GOLD, Vector2(600,450))
 	pass
 
 func display_palette() -> void:
